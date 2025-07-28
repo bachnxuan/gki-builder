@@ -81,8 +81,8 @@ jobs:
           KSU_MANUAL_HOOK: ${{ inputs.KSU_MANUAL_HOOK }}
         run: |
           _error() {
-              echo "❌ ERROR: $*"
-              let ret++
+              echo "::error::❌ ERROR: $*";    
+              ((ret++));
           }
 
           ret=0
@@ -105,7 +105,7 @@ jobs:
             _error "Cannot use KSU Manual Hooks without KernelSU!"
           fi
 
-          if [[ $ret -gt 0 ]]; then
+          if ((ret)); then
             exit $ret
           fi
 
