@@ -143,6 +143,7 @@ fi
 export KBUILD_BUILD_USER="$USER"
 export KBUILD_BUILD_HOST="$HOST"
 export KBUILD_BUILD_TIMESTAMP=$(date)
+export CC="ccache clang" CXX="ccache clang++"
 BUILD_FLAGS="-j$(nproc --all) ARCH=arm64 LLVM=1 LLVM_IAS=1 O=out CROSS_COMPILE=aarch64-linux-gnu-"
 KERNEL_IMAGE="$KSRC/out/arch/arm64/boot/Image"
 
