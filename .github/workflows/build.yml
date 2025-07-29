@@ -92,13 +92,13 @@ jobs:
           ret=0
 
           # Check secrets
-          [[ -z "$TG_CHAT_ID" ]]   && _error "Missing TG_CHAT_ID secret (Telegram Chat ID)"     && ((ret++))
-          [[ -z "$TG_BOT_TOKEN" ]] && _error "Missing TG_BOT_TOKEN secret (Telegram Bot Token)" && ((ret++))
-          [[ -z "$GH_TOKEN" ]];    && _error "Missing GH_TOKEN secret (GitHub PAT)"             && ((ret++))
+          [[ -z "$TG_CHAT_ID" ]]   && _error "Missing TG_CHAT_ID secret (Telegram Chat ID)"
+          [[ -z "$TG_BOT_TOKEN" ]] && _error "Missing TG_BOT_TOKEN secret (Telegram Bot Token)"
+          [[ -z "$GH_TOKEN" ]];    && _error "Missing GH_TOKEN secret (GitHub PAT)"
 
           # Check KernelSU variants
-          [[ $KSU == "None" && $KSU_SUSFS == "true" ]]       && _error "Cannot use SuSFS without KernelSU"             && ((ret++))
-          [[ $KSU == "None" && $KSU_MANUAL_HOOK == "true" ]] && _error "Cannot use KSU Manual Hooks without KernelSU!" && ((ret++))
+          [[ $KSU == "None" && $KSU_SUSFS == "true" ]]       && _error "Cannot use SuSFS without KernelSU"
+          [[ $KSU == "None" && $KSU_MANUAL_HOOK == "true" ]] && _error "Cannot use KSU Manual Hooks without KernelSU!"
 
           if ((ret)); then
             exit $ret
